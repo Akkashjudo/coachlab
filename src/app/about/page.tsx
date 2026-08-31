@@ -10,7 +10,6 @@ import { Philosophy } from "@/components/home/Philosophy";
 import { FounderSection } from "@/components/home/FounderSection";
 import { GallerySection } from "@/components/home/GallerySection";
 import { LearningJourney } from "@/components/home/LearningJourney";
-import { WhyCoachLab } from "@/components/home/WhyCoachLab";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { siteConfig } from "@/data/site";
 import { SITE_URL } from "@/lib/site-url";
@@ -175,10 +174,9 @@ export default function AboutPage() {
       </section>
 
       <Philosophy index="03" />
-      <WhyCoachLab index="04" />
-      <LearningJourney index="05" />
-      <FounderSection index="06" />
-      <GallerySection index="07" />
+      <LearningJourney index="04" />
+      <FounderSection index="05" />
+      <GallerySection index="06" />
 
       <FinalCTA
         index="—"

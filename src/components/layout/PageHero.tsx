@@ -41,7 +41,6 @@ export function PageHero({
         className="top-[-4rem] right-[-8rem] hidden lg:block"
         size={560}
         opacity={0.04}
-        priority
       />
 
       <Container className="relative">

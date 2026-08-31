@@ -4,7 +4,6 @@ import { ButtonLink } from "@/components/ui/Button";
 import { TechBackdrop } from "@/components/ui/TechBackdrop";
 import { PageHero } from "@/components/layout/PageHero";
 import { CourseFilterGrid } from "@/components/course/CourseFilterGrid";
-import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { courses } from "@/data/courses";
 import { SITE_URL } from "@/lib/site-url";
@@ -100,7 +99,6 @@ export default function CoursesPage() {
         </Container>
       </section>
 
-      <FaqSection />
       <FinalCTA
         index="—"
         eyebrow="Next Step"

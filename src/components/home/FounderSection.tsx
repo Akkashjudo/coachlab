@@ -15,7 +15,7 @@ import {
 import { siteConfig } from "@/data/site";
 import { EASE_EXPO } from "@/lib/motion";
 
-export function FounderSection({ index = "09" }: { index?: string }) {
+export function FounderSection({ index = "06" }: { index?: string }) {
   const { founder } = siteConfig;
 
   return (

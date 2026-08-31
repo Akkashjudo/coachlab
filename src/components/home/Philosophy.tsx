@@ -22,7 +22,19 @@ const triptych = [
   { word: "Elevate", note: "Apply it professionally.", from: 0 },
 ] as const;
 
-export function Philosophy({ index = "07" }: { index?: string }) {
+/**
+ * `compact` drops the heading and both paragraphs, leaving only the three
+ * words. The homepage already makes the theory-plus-practice argument four
+ * other ways; there it runs as a pure brand beat between two dense sections.
+ * /about keeps the full statement, where the reader has come for the story.
+ */
+export function Philosophy({
+  index = "07",
+  compact = false,
+}: {
+  index?: string;
+  compact?: boolean;
+}) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -38,7 +50,9 @@ export function Philosophy({ index = "07" }: { index?: string }) {
     <section
       id="philosophy"
       ref={ref}
-      className="seam-top section-y relative isolate overflow-hidden bg-ink-2"
+      className={`seam-top relative isolate overflow-hidden bg-ink-2 ${
+        compact ? "py-0" : "section-y"
+      }`}
     >
       <TechBackdrop grid="sm" glow="center" />
       <MonogramWatermark
@@ -47,6 +61,7 @@ export function Philosophy({ index = "07" }: { index?: string }) {
         opacity={0.022}
       />
 
+      {!compact && (
       <Container>
         <div className="mx-auto max-w-4xl text-center">
           <Reveal y={14}>
@@ -85,9 +100,14 @@ export function Philosophy({ index = "07" }: { index?: string }) {
           </div>
         </div>
       </Container>
+      )}
 
       {/* --------------------------------------------- the three words */}
-      <ol className="relative mt-20 border-y border-hairline-soft sm:mt-28">
+      <ol
+        className={`relative border-y border-hairline-soft ${
+          compact ? "" : "mt-20 sm:mt-28"
+        }`}
+      >
         {triptych.map((item, i) => (
           <Word
             key={item.word}

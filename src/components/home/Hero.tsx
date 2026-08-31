@@ -9,20 +9,21 @@ import { MaskedHeading } from "@/components/ui/Reveal";
 import { TechBackdrop, MonogramWatermark } from "@/components/ui/TechBackdrop";
 import { PointerLayer, usePointerField } from "@/components/motion/Parallax";
 import { HeroPlate } from "@/components/home/HeroPlate";
-import { siteConfig } from "@/data/site";
+import { siteConfig, trustFacts } from "@/data/site";
 import { EASE_EXPO } from "@/lib/motion";
 import { useDesktopPointer } from "@/lib/hooks";
 
-const microCopy = [
-  "Professional Fitness Education",
-  "Practical Coaching",
-  "Career Development",
-];
-
 /**
- * The entrance is a sequence, not a simultaneous fade. Every beat is timed off
- * this table so the running order stays legible when it is tuned.
+ * The hero has one job: make a stranger understand what CoachLab is, who it is
+ * for and what to do next — inside about five seconds.
+ *
+ * It previously opened on the brand slogan ("Build the knowledge…"), which
+ * reads well but never says what the business actually is. The headline now
+ * names the outcome, the sub-line names the institute, the city and the
+ * format, and the strip underneath carries only facts that can be checked
+ * against the data files.
  */
+
 const T = {
   eyebrow: 0,
   headline: 0.12,
@@ -30,7 +31,7 @@ const T = {
   plate: 0.46,
   copy: 0.58,
   actions: 0.68,
-  micro: 0.82,
+  trust: 0.82,
   strip: 0.95,
 } as const;
 
@@ -59,20 +60,18 @@ export function Hero() {
     >
       <TechBackdrop glow="right" />
 
-      {/* background monogram — scroll drift plus the shallowest pointer layer */}
       <motion.div style={{ y: driftY, opacity: driftFade }} aria-hidden>
         <PointerLayer mx={mx} my={my} depth={4}>
           <MonogramWatermark
             className="top-[4%] -right-[16%] hidden lg:block"
             size={720}
             opacity={0.05}
-            priority
           />
         </PointerLayer>
       </motion.div>
 
       <Container className="relative">
-        {/* 01 — eyebrow */}
+        {/* 01 — what this is, and where */}
         <motion.div
           data-reveal=""
           initial={{ opacity: 0, y: 14 }}
@@ -81,7 +80,9 @@ export function Hero() {
           className="flex flex-wrap items-center gap-x-3 gap-y-2"
         >
           <span aria-hidden className="size-[5px] rotate-45 bg-gold" />
-          <span className="micro text-gold">CoachLab</span>
+          <span className="micro text-gold">
+            Institute of Fitness Education &amp; Science
+          </span>
           <motion.span
             aria-hidden
             data-reveal=""
@@ -90,27 +91,23 @@ export function Hero() {
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.6, ease: EASE_EXPO, delay: 0.25 }}
           />
-          <span className="micro text-dim">
-            Institute of Fitness Education &amp; Science
-          </span>
+          <span className="micro text-dim">{siteConfig.location.city}</span>
         </motion.div>
 
-        {/* 02 — headline, line by line */}
+        {/* 02 — the outcome, named plainly */}
         <MaskedHeading
           as="h1"
           className="mt-7 font-display text-hero font-extrabold tracking-[-0.024em] text-bone uppercase sm:mt-9"
           lines={[
-            "Build the knowledge.",
-            "Master the skills.",
-            <span key="become" className="text-metal">
-              Become the coach.
+            "Train to become a",
+            <span key="cert" className="text-metal">
+              certified fitness coach.
             </span>,
           ]}
           delay={T.headline}
           trigger="mount"
         />
 
-        {/* 03 — rule draws out */}
         <motion.div
           aria-hidden
           data-reveal=""
@@ -120,22 +117,27 @@ export function Hero() {
           transition={{ duration: 1.2, ease: EASE_EXPO, delay: T.rule }}
         />
 
-        <div className="grid gap-10 pt-10 pb-14 sm:pt-12 lg:grid-cols-12 lg:gap-12 lg:pb-24 xl:gap-16">
+        <div className="grid gap-10 pt-10 pb-10 sm:pt-12 lg:grid-cols-12 lg:gap-12 lg:pb-16 xl:gap-16">
           <motion.div style={{ y: copyLift }} className="lg:col-span-6">
-            {/* 04 — supporting copy */}
+            {/* 03 — the institute, the offer, the format, in one sentence */}
             <motion.p
               data-reveal=""
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE_EXPO, delay: T.copy }}
-              className="max-w-xl text-[1rem] leading-relaxed text-muted sm:text-[1.075rem]"
+              className="max-w-xl text-[1.0625rem] leading-relaxed text-muted sm:text-[1.15rem]"
             >
-              CoachLab combines exercise science, practical coaching and
-              career-focused education to prepare aspiring fitness
-              professionals for the real demands of the industry.
+              CoachLab is a fitness education institute in{" "}
+              <span className="text-bone">{siteConfig.location.short}</span>.
+              Six professional programs in exercise science, coaching and
+              nutrition — taught{" "}
+              <span className="text-bone">
+                half in the classroom, half on the training floor
+              </span>
+              .
             </motion.p>
 
-            {/* 05 — actions */}
+            {/* 04 — what to do next */}
             <motion.div
               data-reveal=""
               initial={{ opacity: 0, y: 18 }}
@@ -150,29 +152,8 @@ export function Hero() {
                 Talk to CoachLab
               </ButtonLink>
             </motion.div>
-
-            <motion.ul
-              data-reveal=""
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.9, ease: EASE_EXPO, delay: T.micro }}
-              className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2.5"
-            >
-              {microCopy.map((item, i) => (
-                <li key={item} className="flex items-center gap-4">
-                  {i > 0 && (
-                    <span
-                      aria-hidden
-                      className="size-[4px] rotate-45 bg-gold-muted"
-                    />
-                  )}
-                  <span className="micro text-[0.625rem] text-dim">{item}</span>
-                </li>
-              ))}
-            </motion.ul>
           </motion.div>
 
-          {/* 06 — the instrument plate */}
           <motion.div
             data-reveal=""
             initial={{ opacity: 0, y: 28 }}
@@ -183,6 +164,26 @@ export function Hero() {
             <HeroPlate mx={mx} my={my} />
           </motion.div>
         </div>
+
+        {/* 05 — credibility, checkable against the data files */}
+        <motion.dl
+          data-reveal=""
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: EASE_EXPO, delay: T.trust }}
+          className="grid gap-px overflow-hidden border-y border-hairline-soft bg-hairline-soft sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {trustFacts.map((fact) => (
+            <div key={fact.label} className="bg-ink px-5 py-5 sm:px-6">
+              <dt className="display-wide-sm font-display text-[1.05rem] leading-tight font-bold text-bone sm:text-[1.15rem]">
+                {fact.value}
+              </dt>
+              <dd className="micro mt-2.5 text-[0.575rem] text-dim">
+                {fact.label}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
       </Container>
 
       <motion.div
@@ -190,7 +191,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: EASE_EXPO, delay: T.strip }}
-        className="relative border-t border-hairline-soft"
+        className="relative mt-10 border-t border-hairline-soft sm:mt-14"
       >
         <Container>
           <div className="flex items-center justify-between gap-6 py-4">
@@ -216,7 +217,7 @@ export function Hero() {
             />
 
             <span className="micro text-[0.6rem] text-dim">
-              {siteConfig.location.city}
+              Educate · Empower · Elevate
             </span>
           </div>
         </Container>
