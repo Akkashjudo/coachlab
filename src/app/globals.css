@@ -1,0 +1,453 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   COACHLAB — Institute of Fitness Education & Science
+   Design system. Matte black + metallic gold, technical/editorial.
+   ========================================================================= */
+
+@theme {
+  /* ---- surfaces ---- */
+  --color-ink: #050505;
+  --color-ink-2: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-2: #161616;
+  --color-surface-3: #1e1e1e;
+
+  /* ---- brand gold ---- */
+  --color-gold: #e3ad28;
+  --color-gold-bright: #ffc83d;
+  --color-gold-muted: #a97916;
+  --color-gold-deep: #5c3f0b;
+
+  /* ---- text ---- */
+  --color-bone: #f7f7f5;
+  --color-muted: #a6a6a6;
+  --color-dim: #8a8a8a;
+
+  /* ---- hairlines ---- */
+  --color-hairline: rgba(227, 173, 40, 0.2);
+  --color-hairline-strong: rgba(227, 173, 40, 0.42);
+  --color-hairline-soft: rgba(247, 247, 245, 0.08);
+
+  /* ---- type ---- */
+  --font-display: var(--font-archivo), "Arial Black", system-ui, sans-serif;
+  --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+
+  /* Fluid display scale — small enough on phones, commanding on desktop */
+  --text-d1: clamp(2.5rem, 6.6vw, 5.75rem);
+  --text-d1--line-height: 0.94;
+  --text-d2: clamp(2.125rem, 5vw, 4rem);
+  --text-d2--line-height: 0.98;
+  --text-d3: clamp(1.75rem, 3.6vw, 2.75rem);
+  --text-d3--line-height: 1.04;
+  --text-d4: clamp(1.375rem, 2.4vw, 1.875rem);
+  --text-d4--line-height: 1.12;
+
+  /* Statement type — reserved for the loudest moments on a page. */
+  --text-statement: clamp(2.75rem, 9vw, 8.5rem);
+  --text-statement--line-height: 0.86;
+  --text-hero: clamp(2.125rem, 6.4vw, 5.75rem);
+  --text-hero--line-height: 0.94;
+
+  --radius-card: 4px;
+  --radius-panel: 6px;
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================================================
+   Base
+   ========================================================================= */
+
+@layer base {
+  * {
+    border-color: var(--color-hairline-soft);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    /* the fixed navbar must not sit on top of an anchored heading */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    font-feature-settings: "kern", "liga", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Nothing may ever scroll the page sideways. */
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Long words (course names, e-mail addresses) must never push the layout. */
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  li,
+  a {
+    overflow-wrap: break-word;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: #000;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Firefox / Safari scrollbar treatment */
+  html {
+    scrollbar-color: var(--color-gold-deep) var(--color-ink);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2113;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-deep);
+  }
+}
+
+/* =========================================================================
+   Utilities
+   ========================================================================= */
+
+/* Page gutter + max width, used by <Container> */
+@utility shell {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 88rem;
+  padding-inline: clamp(1.125rem, 4vw, 3.5rem);
+}
+
+/* Same inline padding as `shell`, for full-bleed rails that must still start
+   on the page's gutter. */
+@utility gutter-x {
+  padding-inline: clamp(1.125rem, 4vw, 3.5rem);
+}
+
+@utility gutter-mx {
+  margin-inline: clamp(1.125rem, 4vw, 3.5rem);
+}
+
+/* Vertical rhythm: 64–90px mobile, 96–140px desktop */
+@utility section-y {
+  padding-block: clamp(4rem, 9vw, 8.75rem);
+}
+
+@utility section-y-sm {
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+/* Micro-label typography — mono, wide, quiet. Used for indices and eyebrows. */
+@utility micro {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Archivo carries a width axis. Widening the display face echoes the
+   wide COACHLAB wordmark without touching the logo artwork itself. */
+@utility display-wide {
+  font-variation-settings: "wght" 800, "wdth" 108;
+}
+
+@utility display-wide-sm {
+  font-variation-settings: "wght" 700, "wdth" 106;
+}
+
+@utility display-narrow {
+  font-variation-settings: "wght" 800, "wdth" 100;
+}
+
+/* Metallic gold text — mirrors the bevelled gold of the logo */
+@utility text-metal {
+  background-image: linear-gradient(
+    135deg,
+    #8a5f0e 0%,
+    #e3ad28 22%,
+    #ffe9a8 42%,
+    #e3ad28 60%,
+    #a97916 78%,
+    #f0c455 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Fine technical grid — the "lab paper" the whole site sits on */
+@utility bg-tech-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(247, 247, 245, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(247, 247, 245, 0.035) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center center;
+}
+
+@utility bg-tech-grid-sm {
+  background-image: linear-gradient(
+      to right,
+      rgba(247, 247, 245, 0.028) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(247, 247, 245, 0.028) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Film grain. Inline SVG so it costs no request. */
+@utility bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* Hairline rules that fade out at both ends */
+@utility rule-fade {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-hairline-strong) 18%,
+    var(--color-hairline-strong) 82%,
+    transparent
+  );
+}
+
+/* Card surface used across courses / pillars / workshops */
+@utility panel {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0) 55%),
+    var(--color-surface);
+  border: 1px solid var(--color-hairline-soft);
+  border-radius: var(--radius-card);
+}
+
+/* Cursor-follow highlight. The position comes from JS as CSS variables, so
+   moving the pointer never re-renders React. Defaults keep it invisible until
+   a precise pointer actually enters. */
+@utility spotlight {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: var(--spot-opacity, 0);
+    transition: opacity 420ms var(--ease-expo);
+    background: radial-gradient(
+      var(--spot-radius, 460px) circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      rgba(227, 173, 40, var(--spot-alpha, 0.08)),
+      transparent 42%
+    );
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Seam between two slabs: a gold hairline that fades out at both ends, plus a
+   soft gradient so the colour change is a transition rather than a hard edge.
+   Applied to any `.section-y` that follows another section. */
+@utility seam-top {
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-hairline) 22%,
+      var(--color-hairline) 78%,
+      transparent
+    );
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 7rem;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      rgba(227, 173, 40, 0.035),
+      transparent
+    );
+  }
+}
+
+/* Oversized decorative numeral used behind editorial sections. */
+@utility ghost-numeral {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(227, 173, 40, 0.16);
+  user-select: none;
+}
+
+/* Repeating tick marks — measurement/ruler motif */
+@utility ticks-x {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-hairline-strong) 0 1px,
+    transparent 1px 12px
+  );
+}
+
+@utility ticks-y {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--color-hairline-strong) 0 1px,
+    transparent 1px 12px
+  );
+}
+
+/* Hides scrollbars on horizontal filter rails without losing scrollability */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* =========================================================================
+   Keyframes
+   ========================================================================= */
+
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes gold-sweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.82);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-x var(--marquee-duration, 42s) linear infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s var(--ease-expo) infinite;
+}
+
+/* =========================================================================
+   Reduced motion — a hard stop, honoured everywhere
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* The marquee stops outright rather than snapping to its end frame. */
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /*
+   * Scroll-reveal elements are rendered hidden and revealed by JS. Motion's
+   * own reduced-motion mode stops the transform but leaves them parked on
+   * their initial opacity, so force the finished state here instead. This is
+   * the difference between "no animation" and "no content".
+   */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* No cursor-follow highlight when motion is unwelcome. */
+  .spotlight::before {
+    opacity: 0 !important;
+  }
+
+  /*
+   * A wipe panel starts on top of what it reveals, so the `[data-reveal]`
+   * reset cannot help it — `transform: none` leaves it covering. Remove it.
+   */
+  .reveal-wipe {
+    display: none !important;
+  }
+}
