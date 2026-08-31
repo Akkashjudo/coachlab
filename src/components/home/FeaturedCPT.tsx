@@ -49,7 +49,7 @@ export function FeaturedCPT() {
           <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
             <Reveal y={14}>
               <div className="flex items-center gap-4">
-                <span className="micro text-gold-muted tabular-nums">04</span>
+                <span className="micro text-gold-muted tabular-nums">03</span>
                 <span aria-hidden className="h-px w-8 bg-hairline-strong" />
                 <Eyebrow>Featured Program</Eyebrow>
               </div>

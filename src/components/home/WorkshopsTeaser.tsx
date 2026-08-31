@@ -20,7 +20,7 @@ export function WorkshopsTeaser() {
           <div className="lg:col-span-5">
             <Reveal y={14}>
               <div className="flex items-center gap-4">
-                <span className="micro text-gold-muted tabular-nums">12</span>
+                <span className="micro text-gold-muted tabular-nums">07</span>
                 <span aria-hidden className="h-px w-8 bg-hairline-strong" />
                 <Eyebrow>Continuing Education</Eyebrow>
               </div>

@@ -7,7 +7,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { faqs } from "@/data/faqs";
 import { siteConfig } from "@/data/site";
 
-export function FaqSection({ index = "13" }: { index?: string }) {
+export function FaqSection({ index = "08" }: { index?: string }) {
   return (
     <section id="faq" className="seam-top section-y relative isolate bg-ink-2">
       <TechBackdrop grid="lg" glow="top" />

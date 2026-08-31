@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
  * at a time, the first by default, so the section never reads as an empty
  * stack of headings.
  */
-export function WhyCoachLab({ index = "06" }: { index?: string }) {
+export function WhyCoachLab({ index = "05" }: { index?: string }) {
   const [open, setOpen] = useState(0);
   const baseId = useId();
 

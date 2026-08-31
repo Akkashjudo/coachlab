@@ -19,7 +19,7 @@ import { whatsappEnquiry } from "@/lib/whatsapp";
 export function FinalCTA({
   headline = ["Your journey into", "professional coaching", "starts here."],
   copy = "Talk to CoachLab about the right course for your goals and upcoming batch availability.",
-  index = "14",
+  index = "09",
   eyebrow = "Get Started",
 }: {
   headline?: string[];

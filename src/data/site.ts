@@ -209,3 +209,49 @@ export const audiences = [
     copy: "People considering fitness coaching as a professional career path.",
   },
 ] as const;
+
+/* ------------------------------------------------------------------ */
+/*  Enrolment process — answers "what happens after I contact them?"   */
+/*                                                                      */
+/*  Every step restates something already documented in the FAQ. Do not */
+/*  add a step (deposits, interviews, entrance tests) unless CoachLab   */
+/*  confirms it actually happens.                                       */
+/* ------------------------------------------------------------------ */
+
+export const enrolmentSteps = [
+  {
+    index: "01",
+    title: "Enquire",
+    copy: "Message on WhatsApp, call, or send the enquiry form. Tell us where you are in your fitness career.",
+  },
+  {
+    index: "02",
+    title: "Find your program",
+    copy: "We talk through your background and point you to the right starting point — foundation, advanced or a single workshop.",
+  },
+  {
+    index: "03",
+    title: "Confirm the batch",
+    copy: "We confirm current batch dates, the session format and the enrolment steps for the intake you are joining.",
+  },
+  {
+    index: "04",
+    title: "Start learning",
+    copy: "Classroom theory and floor practice, taught in Iyappanthangal, Porur.",
+  },
+] as const;
+
+/* ------------------------------------------------------------------ */
+/*  Trust strip — verifiable facts only.                                */
+/*                                                                      */
+/*  No student counts, no years in operation, no placement rates, no    */
+/*  accreditations: none of those have been confirmed. Every entry here */
+/*  is either countable from the data files or stated in course copy.   */
+/* ------------------------------------------------------------------ */
+
+export const trustFacts = [
+  { value: "6", label: "Professional programs" },
+  { value: "Theory + Practical", label: "Every program" },
+  { value: "Chennai", label: "Iyappanthangal, Porur" },
+  { value: "Aditya V.", label: "Founder & head lecturer" },
+] as const;
