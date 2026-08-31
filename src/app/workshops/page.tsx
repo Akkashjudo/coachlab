@@ -8,7 +8,8 @@ import { TechBackdrop, CornerFrame } from "@/components/ui/TechBackdrop";
 import { PageHero } from "@/components/layout/PageHero";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { workshopTopics } from "@/data/workshops";
-import { SITE_URL, siteConfig } from "@/data/site";
+import { SITE_URL } from "@/lib/site-url";
+import { siteConfig } from "@/data/site";
 import { whatsappEnquiry } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { courses } from "@/data/courses";
-import { SITE_URL } from "@/data/site";
+import { SITE_URL } from "@/lib/site-url";
+
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

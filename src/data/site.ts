@@ -49,14 +49,6 @@ export const siteConfig = {
   },
 } as const;
 
-/**
- * Set NEXT_PUBLIC_SITE_URL once the domain is live — canonical URLs,
- * sitemap entries and Open Graph tags all read from here.
- */
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-).replace(/\/$/, "");
-
 /* ------------------------------------------------------------------ */
 /*  Current batch — expect this to change every intake.                */
 /* ------------------------------------------------------------------ */

@@ -13,7 +13,8 @@ import {
 } from "@/components/course/CourseDetail";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { courses, getCourse } from "@/data/courses";
-import { SITE_URL, siteConfig, currentBatch } from "@/data/site";
+import { SITE_URL } from "@/lib/site-url";
+import { siteConfig, currentBatch } from "@/data/site";
 
 type Params = { slug: string };
 

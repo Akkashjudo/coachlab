@@ -5,7 +5,8 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileCTA } from "@/components/layout/MobileCTA";
 import { MotionProvider } from "@/components/providers/MotionProvider";
 import { PageTransition } from "@/components/providers/PageTransition";
-import { SITE_URL, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
+import { SITE_URL } from "@/lib/site-url";
 import "./globals.css";
 
 /* Display face carries a width axis, echoing the wide COACHLAB wordmark. */

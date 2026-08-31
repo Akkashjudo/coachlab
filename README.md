@@ -14,11 +14,23 @@ npm run typecheck    # tsc --noEmit
 
 ## Before going live
 
-Set the site URL so canonical tags, Open Graph and `sitemap.xml` resolve:
+Canonical tags, Open Graph and `sitemap.xml` read their origin from
+`src/lib/site-url.ts`, which resolves in this order:
+
+1. `NEXT_PUBLIC_SITE_URL`
+2. Vercel's `VERCEL_PROJECT_PRODUCTION_URL`, then `VERCEL_URL`
+3. `http://localhost:3000`
+
+So a Vercel deploy is correct without any configuration. Set the variable
+once a real domain exists:
 
 ```bash
 cp .env.example .env.local   # then edit NEXT_PUBLIC_SITE_URL
 ```
+
+A blank value counts as "not set", and a bare domain gets an `https://`
+prefix — the resolver never throws, because an env var that existed but was
+empty once took a production build down with `ERR_INVALID_URL`.
 
 ## Editing content
 

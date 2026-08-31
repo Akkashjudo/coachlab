@@ -6,7 +6,8 @@ import { TechBackdrop, CornerFrame } from "@/components/ui/TechBackdrop";
 import { PageHero } from "@/components/layout/PageHero";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { FaqSection } from "@/components/home/FaqSection";
-import { SITE_URL, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
+import { SITE_URL } from "@/lib/site-url";
 import { whatsappEnquiry } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {

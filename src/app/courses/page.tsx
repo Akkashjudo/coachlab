@@ -7,7 +7,8 @@ import { CourseFilterGrid } from "@/components/course/CourseFilterGrid";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { courses } from "@/data/courses";
-import { SITE_URL, siteConfig } from "@/data/site";
+import { SITE_URL } from "@/lib/site-url";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Fitness Courses in Chennai | Personal Trainer & Nutrition Programs",
