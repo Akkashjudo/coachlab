@@ -7,7 +7,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { FaqSection } from "@/components/home/FaqSection";
 import { siteConfig } from "@/data/site";
-import { SITE_URL } from "@/lib/site-url";
+import { SITE_URL, OG_IMAGE } from "@/lib/site-url";
 import { whatsappEnquiry } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     description:
       "Enquire about CoachLab's fitness education programs and upcoming batches.",
     url: `${SITE_URL}/contact`,
+
+      images: [OG_IMAGE],
   },
 };
 

@@ -12,25 +12,29 @@ npm run lint         # eslint
 npm run typecheck    # tsc --noEmit
 ```
 
-## Before going live
+## Domain and SEO
 
-Canonical tags, Open Graph and `sitemap.xml` read their origin from
-`src/lib/site-url.ts`, which resolves in this order:
+Canonical tags, Open Graph URLs, `sitemap.xml`, `robots.txt` and the
+organisation JSON-LD all read their origin from `src/lib/site-url.ts`, which
+resolves in this order:
 
-1. `NEXT_PUBLIC_SITE_URL`
-2. Vercel's `VERCEL_PROJECT_PRODUCTION_URL`, then `VERCEL_URL`
-3. `http://localhost:3000`
+1. `NEXT_PUBLIC_SITE_URL` — an override for staging or a domain change.
+   Blank counts as unset.
+2. `https://coachlab.in` — the canonical production domain, held in code.
+3. `http://localhost:3000` — local development only.
 
-So a Vercel deploy is correct without any configuration. Set the variable
-once a real domain exists:
+Vercel's `VERCEL_PROJECT_PRODUCTION_URL` is deliberately not consulted.
+It previously sat at step 2, which published the deployment host
+(`coachlab-seven.vercel.app`) into every canonical tag and every sitemap
+`<loc>`. The canonical domain belongs in the repository, where a review can
+catch it, not in a dashboard field that can silently go empty.
 
-```bash
-cp .env.example .env.local   # then edit NEXT_PUBLIC_SITE_URL
-```
+**If the domain ever changes, edit `PRODUCTION_URL` in
+`src/lib/site-url.ts`.** Nothing else needs touching — the sitemap, robots
+and every page's metadata derive from it.
 
-A blank value counts as "not set", and a bare domain gets an `https://`
-prefix — the resolver never throws, because an env var that existed but was
-empty once took a production build down with `ERR_INVALID_URL`.
+`npm run verify:seo` builds the site and asserts that every sitemap URL, the
+robots host and the robots sitemap line all use the production domain.
 
 ## Editing content
 

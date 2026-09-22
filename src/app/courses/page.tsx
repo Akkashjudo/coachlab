@@ -6,7 +6,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { CourseFilterGrid } from "@/components/course/CourseFilterGrid";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { courses } from "@/data/courses";
-import { SITE_URL } from "@/lib/site-url";
+import { SITE_URL, OG_IMAGE } from "@/lib/site-url";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -19,6 +19,8 @@ export const metadata: Metadata = {
     description:
       "Six professional programs covering exercise science, practical coaching, nutrition and continuing education.",
     url: `${SITE_URL}/courses`,
+
+      images: [OG_IMAGE],
   },
 };
 

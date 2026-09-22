@@ -8,7 +8,7 @@ import { TechBackdrop, CornerFrame } from "@/components/ui/TechBackdrop";
 import { PageHero } from "@/components/layout/PageHero";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { workshopTopics } from "@/data/workshops";
-import { SITE_URL } from "@/lib/site-url";
+import { SITE_URL, OG_IMAGE } from "@/lib/site-url";
 import { siteConfig } from "@/data/site";
 import { whatsappEnquiry } from "@/lib/whatsapp";
 
@@ -22,6 +22,8 @@ export const metadata: Metadata = {
     description:
       "Focused continuing-education sessions for working fitness professionals.",
     url: `${SITE_URL}/workshops`,
+
+      images: [OG_IMAGE],
   },
 };
 

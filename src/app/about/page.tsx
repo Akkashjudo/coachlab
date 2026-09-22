@@ -12,7 +12,7 @@ import { GallerySection } from "@/components/home/GallerySection";
 import { LearningJourney } from "@/components/home/LearningJourney";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { siteConfig } from "@/data/site";
-import { SITE_URL } from "@/lib/site-url";
+import { SITE_URL, OG_IMAGE } from "@/lib/site-url";
 
 export const metadata: Metadata = {
   title: "About CoachLab | Fitness Education Institute in Chennai",
@@ -23,6 +23,8 @@ export const metadata: Metadata = {
     title: "About CoachLab | Fitness Education Institute in Chennai",
     description: "Why CoachLab exists, how it teaches, and who leads it.",
     url: `${SITE_URL}/about`,
+
+      images: [OG_IMAGE],
   },
 };
 
