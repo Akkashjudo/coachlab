@@ -33,6 +33,20 @@ catch it, not in a dashboard field that can silently go empty.
 `src/lib/site-url.ts`.** Nothing else needs touching — the sitemap, robots
 and every page's metadata derive from it.
 
+### Favicons
+
+`npm run build:favicons` regenerates the whole icon set from
+`public/images/brand/coachlab-mark.png` — a multi-resolution `favicon.ico`
+(16/32/48), PNGs at 48/96/144/192/512, a 180px Apple touch icon and a
+safe-zone-padded maskable icon for Android. They are declared explicitly in
+`metadata.icons` in the root layout rather than through the `app/icon.*` file
+convention, which emitted a single 180x180 PNG behind a cache-busting query
+and never produced a `/favicon.ico` for Google to find.
+
+The artwork is never redrawn: the monogram is trimmed to its ink, re-padded
+and flattened onto the brand black. Gold on black is roughly 10:1; gold on
+white would be about 2:1, which is why the icons are not transparent.
+
 `npm run verify:seo` builds the site and asserts that every sitemap URL, the
 robots host and the robots sitemap line all use the production domain.
 

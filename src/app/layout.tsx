@@ -75,6 +75,29 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: ["/images/brand/og-default.jpg"],
   },
+  /*
+   * Icons are declared explicitly rather than via the app/icon.* file
+   * convention. That convention emitted a single 180x180 PNG behind a
+   * cache-busting query string and never produced /favicon.ico, so Google's
+   * favicon crawler — which looks for /favicon.ico first and documents a
+   * preference for squares that are a multiple of 48px — fell back to the
+   * generic globe. `favicon.ico` itself lives in public/ and is served from
+   * the domain root.
+   */
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/icons/icon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icons/icon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: [{ url: "/favicon.ico" }],
+    apple: [
+      { url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/site.webmanifest",
   robots: {
     index: true,
     follow: true,

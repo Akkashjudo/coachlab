@@ -120,6 +120,51 @@ for (const [file, label] of pages) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Favicons                                                           */
+/* ------------------------------------------------------------------ */
+
+// Google looks for /favicon.ico first and documents a preference for squares
+// that are a multiple of 48px. Shipping only a 180x180 PNG and no .ico is what
+// left the search result showing a generic globe.
+const iconFiles = [
+  "public/favicon.ico",
+  "public/icons/icon-48.png",
+  "public/icons/icon-96.png",
+  "public/icons/icon-192.png",
+  "public/icons/icon-512.png",
+  "public/icons/apple-touch-icon.png",
+  "public/icons/icon-maskable-512.png",
+  "public/site.webmanifest",
+];
+const missingIcons = iconFiles.filter((f) => !fs.existsSync(f));
+if (missingIcons.length) fail(`missing icon asset(s): ${missingIcons.join(", ")}`);
+else pass(`all ${iconFiles.length} icon assets present`);
+
+// The .ico must really be a multi-resolution icon, not a renamed PNG.
+if (fs.existsSync("public/favicon.ico")) {
+  const ico = fs.readFileSync("public/favicon.ico");
+  const isIco = ico.length > 6 && ico.readUInt16LE(0) === 0 && ico.readUInt16LE(2) === 1;
+  const count = isIco ? ico.readUInt16LE(4) : 0;
+  if (!isIco) fail("favicon.ico is not a valid ICO container");
+  else if (count < 3) fail(`favicon.ico holds only ${count} resolution(s); expected 16/32/48`);
+  else pass(`favicon.ico is a valid ICO with ${count} resolutions`);
+}
+
+// The head must reference the .ico and must not reference the old
+// query-stringed app/icon.png convention.
+const home = readBuilt("index.html");
+if (home) {
+  if (home.includes('href="/favicon.ico"')) pass("homepage head links /favicon.ico");
+  else fail("homepage head does not link /favicon.ico");
+
+  if (home.includes('href="/site.webmanifest"')) pass("homepage head links the web manifest");
+  else fail("homepage head does not link the web manifest");
+
+  if (/icon\.png\?/.test(home)) fail("homepage still emits a query-stringed /icon.png reference");
+  else pass("no stale query-stringed icon references");
+}
+
+/* ------------------------------------------------------------------ */
 
 console.log("");
 if (failures) {
