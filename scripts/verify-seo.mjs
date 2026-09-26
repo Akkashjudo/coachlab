@@ -13,7 +13,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const EXPECTED_ORIGIN = "https://coachlab.in";
+const EXPECTED_ORIGIN = "https://www.coachlab.in";
 const BUILD = ".next/server/app";
 
 let failures = 0;
@@ -128,6 +128,8 @@ for (const [file, label] of pages) {
 // left the search result showing a generic globe.
 const iconFiles = [
   "public/favicon.ico",
+  "public/icons/favicon-16x16.png",
+  "public/icons/favicon-32x32.png",
   "public/icons/icon-48.png",
   "public/icons/icon-96.png",
   "public/icons/icon-192.png",

@@ -15,9 +15,9 @@ import { siteConfig } from "@/data/site";
 import { SITE_URL, OG_IMAGE } from "@/lib/site-url";
 
 export const metadata: Metadata = {
-  title: "About CoachLab | Fitness Education Institute in Chennai",
+  title: { absolute: "About CoachLab | Fitness Education Institute in Chennai" },
   description:
-    "CoachLab Institute of Fitness Education & Science is a fitness education institute in Iyappanthangal, Porur, Chennai, founded and led by Aditya V.",
+    "The thinking behind CoachLab — a fitness education institute in Iyappanthangal, Porur, Chennai, founded and led by Aditya V.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About CoachLab | Fitness Education Institute in Chennai",

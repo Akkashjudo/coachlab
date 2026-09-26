@@ -23,8 +23,14 @@
  * is reviewable, not in a dashboard field that can silently go empty.
  */
 
-/** The canonical production origin. Change it here if the domain ever moves. */
-const PRODUCTION_URL = "https://coachlab.in";
+/**
+ * The canonical production origin. Change it here if the domain ever moves.
+ *
+ * www, not the apex: Vercel serves the apex as a 308 to www, so publishing
+ * apex URLs meant every canonical tag and every sitemap <loc> pointed at a
+ * URL that redirects. Search Console reports those as "Page with redirect".
+ */
+const PRODUCTION_URL = "https://www.coachlab.in";
 const DEVELOPMENT_URL = "http://localhost:3000";
 
 /** Normalises to a bare origin, or returns undefined if unusable. */

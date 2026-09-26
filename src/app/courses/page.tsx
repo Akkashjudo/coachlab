@@ -10,12 +10,12 @@ import { SITE_URL, OG_IMAGE } from "@/lib/site-url";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Fitness Courses in Chennai | Personal Trainer & Nutrition Programs",
+  title: { absolute: "Fitness Courses in Chennai | CoachLab" },
   description:
-    "Explore CoachLab's professional fitness education programs in Chennai — Certified Personal Trainer, Advanced CPT, Group Fitness Instructor, Fitness Nutrition Coach, ACE exam preparation and professional workshops.",
+    "Six fitness programs in Chennai — Certified Personal Trainer, Advanced CPT, Group Fitness Instructor, Nutrition Coach, ACE prep and workshops.",
   alternates: { canonical: "/courses" },
   openGraph: {
-    title: "Professional Fitness Courses | CoachLab Chennai",
+    title: "Fitness Courses in Chennai | CoachLab",
     description:
       "Six professional programs covering exercise science, practical coaching, nutrition and continuing education.",
     url: `${SITE_URL}/courses`,

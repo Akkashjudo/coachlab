@@ -13,12 +13,12 @@ import { siteConfig } from "@/data/site";
 import { whatsappEnquiry } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Fitness Workshops in Chennai | Continuing Education for Coaches",
+  title: { absolute: "Fitness Workshops in Chennai | CoachLab" },
   description:
-    "CoachLab Professional Workshops in Chennai — strength and conditioning, functional training, sports nutrition, corrective exercise, physique coaching, fitness business and guest masterclasses.",
+    "Single-subject workshops for working coaches in Chennai — strength and conditioning, functional training, sports nutrition and physique coaching.",
   alternates: { canonical: "/workshops" },
   openGraph: {
-    title: "CoachLab Professional Workshops | Chennai",
+    title: "Fitness Workshops in Chennai | CoachLab",
     description:
       "Focused continuing-education sessions for working fitness professionals.",
     url: `${SITE_URL}/workshops`,

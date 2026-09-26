@@ -33,11 +33,10 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default:
-      "CoachLab | Fitness Education & Personal Trainer Courses Chennai",
+    default: "CoachLab | Fitness Education Institute in Chennai",
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  description: siteConfig.seoDescription,
   applicationName: siteConfig.name,
   keywords: [
     "fitness courses Chennai",
@@ -58,8 +57,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: SITE_URL,
     siteName: siteConfig.fullName,
-    title: "CoachLab | Fitness Education & Personal Trainer Courses Chennai",
-    description: siteConfig.description,
+    title: "CoachLab | Fitness Education Institute in Chennai",
+    description: siteConfig.seoDescription,
     images: [
       {
         url: "/images/brand/og-default.jpg",
@@ -71,8 +70,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CoachLab | Fitness Education & Personal Trainer Courses Chennai",
-    description: siteConfig.description,
+    title: "CoachLab | Fitness Education Institute in Chennai",
+    description: siteConfig.seoDescription,
     images: ["/images/brand/og-default.jpg"],
   },
   /*
@@ -87,6 +86,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/icons/icon-48.png", sizes: "48x48", type: "image/png" },
       { url: "/icons/icon-96.png", sizes: "96x96", type: "image/png" },
       { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },

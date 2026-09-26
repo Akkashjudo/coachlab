@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/SectionHeader";
 import { MaskedHeading, Reveal } from "@/components/ui/Reveal";
 import { TechBackdrop, MonogramWatermark } from "@/components/ui/TechBackdrop";
+import { SITE_URL } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 
 /**
@@ -29,6 +30,25 @@ export function PageHero({
   breadcrumb?: { label: string; href: string }[];
   className?: string;
 }) {
+  /*
+   * BreadcrumbList is emitted from the same prop that renders the visible
+   * trail, so the structured data cannot drift from what is on the page —
+   * which is exactly what Google checks for.
+   */
+  const breadcrumbSchema =
+    breadcrumb && breadcrumb.length > 1
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: breadcrumb.map((crumb, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: crumb.label,
+            item: `${SITE_URL}${crumb.href === "/" ? "" : crumb.href}`,
+          })),
+        }
+      : null;
+
   return (
     <section
       className={cn(
@@ -36,6 +56,12 @@ export function PageHero({
         className,
       )}
     >
+      {breadcrumbSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+      )}
       <TechBackdrop glow="right" />
       <MonogramWatermark
         className="top-[-4rem] right-[-8rem] hidden lg:block"

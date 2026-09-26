@@ -11,12 +11,12 @@ import { SITE_URL, OG_IMAGE } from "@/lib/site-url";
 import { whatsappEnquiry } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Contact CoachLab | Fitness Courses in Iyappanthangal, Chennai",
+  title: { absolute: "Contact CoachLab | Fitness Courses in Chennai" },
   description:
-    "Talk to CoachLab about personal trainer courses, nutrition coaching education and fitness workshops in Iyappanthangal, Porur, Chennai. Call 8778853235 or message on WhatsApp.",
+    "Talk to CoachLab about course options and upcoming batch dates. Call, WhatsApp or enquire — the institute is in Iyappanthangal, Porur, Chennai.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact CoachLab | Chennai",
+    title: "Contact CoachLab | Fitness Courses in Chennai",
     description:
       "Enquire about CoachLab's fitness education programs and upcoming batches.",
     url: `${SITE_URL}/contact`,
@@ -75,7 +75,7 @@ export default function ContactPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
             {/* ------------------------------------------- details */}
-            <div className="lg:col-span-5">
+            <div className="min-w-0 lg:col-span-5">
               <Reveal y={22} className="h-full">
                 <div className="panel relative flex h-full flex-col overflow-hidden p-6 sm:p-8">
                   <CornerFrame size={16} />
@@ -132,7 +132,7 @@ export default function ContactPage() {
                               <span className="micro block text-[0.575rem] text-dim">
                                 {channel.label}
                               </span>
-                              <span className="mt-1.5 block truncate text-[0.925rem] text-bone transition-colors duration-300 group-hover:text-gold">
+                              <span className="mt-1.5 block break-all text-[0.925rem] text-bone transition-colors duration-300 group-hover:text-gold">
                                 {channel.value}
                               </span>
                             </span>
@@ -161,7 +161,7 @@ export default function ContactPage() {
             </div>
 
             {/* ------------------------------------------- form */}
-            <div className="lg:col-span-7">
+            <div className="min-w-0 lg:col-span-7">
               <Reveal y={26} delay={0.08}>
                 <EnquiryForm />
               </Reveal>

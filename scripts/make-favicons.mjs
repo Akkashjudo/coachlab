@@ -94,6 +94,14 @@ const run = async () => {
     console.log(`  ${file}  ${size}x${size}`);
   }
 
+  // Discrete 16/32 PNGs alongside the .ico — some crawlers and older
+  // browsers prefer an explicitly sized PNG over unpacking an ICO.
+  for (const size of [16, 32]) {
+    const file = path.join(OUT_DIR, `favicon-${size}x${size}.png`);
+    fs.writeFileSync(file, await render(size));
+    console.log(`  ${file}  ${size}x${size}`);
+  }
+
   const apple = path.join(OUT_DIR, "apple-touch-icon.png");
   fs.writeFileSync(apple, await render(APPLE_SIZE));
   console.log(`  ${apple}  ${APPLE_SIZE}x${APPLE_SIZE}`);

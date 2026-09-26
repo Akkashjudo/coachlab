@@ -55,6 +55,18 @@ export type Course = {
    * of the syllabus, never additional claims about it.
    */
   story?: { index: string; title: string; copy: string; tags?: string[] }[];
+  /**
+   * Search metadata. Written per course rather than generated from a
+   * template: every course page previously ended on the same sentence
+   * ("Taught at CoachLab Institute of Fitness Education & Science in
+   * Iyappanthangal, Porur, Chennai."), and Google discards near-duplicate
+   * descriptions across a set of pages — which is why it was composing its
+   * own snippet from the page body instead.
+   *
+   * Titles are absolute: the root layout appends "| CoachLab" via a template,
+   * and these already carry the brand.
+   */
+  seo: { title: string; description: string };
   /** Confirmed schedule facts only. Anything unknown is simply absent. */
   format?: { label: string; value: string }[];
   faqs?: { q: string; a: string }[];
@@ -74,6 +86,12 @@ export const courses: Course[] = [
   /* ------------------------------------------------------------------ 01 */
   {
     slug: "certified-personal-trainer",
+    seo: {
+      title:
+        "Certified Personal Trainer Course in Chennai (CPT) | CoachLab",
+      description:
+        "Certified Personal Trainer course in Chennai. Anatomy, physiology, biomechanics and movement assessment, then coaching on the training floor.",
+    },
     index: "01",
     title: "Certified Personal Trainer",
     shortName: "CPT",
@@ -212,6 +230,12 @@ export const courses: Course[] = [
   /* ------------------------------------------------------------------ 02 */
   {
     slug: "advanced-certified-personal-trainer",
+    seo: {
+      title:
+        "Advanced Personal Trainer Course in Chennai | CoachLab",
+      description:
+        "Advanced coaching course in Chennai for working trainers — programming, biomechanics, strength and conditioning and corrective exercise.",
+    },
     index: "02",
     title: "Advanced Certified Personal Trainer",
     shortName: "Advanced CPT",
@@ -268,6 +292,12 @@ export const courses: Course[] = [
   /* ------------------------------------------------------------------ 03 */
   {
     slug: "group-fitness-instructor",
+    seo: {
+      title:
+        "Group Fitness Instructor Course in Chennai (GFI) | CoachLab",
+      description:
+        "Group Fitness Instructor course in Chennai. Programme a class, cue a mixed-ability room, and run functional, HIIT and circuit formats safely.",
+    },
     index: "03",
     title: "Certified Group Fitness Instructor",
     shortName: "GFI",
@@ -315,6 +345,12 @@ export const courses: Course[] = [
   /* ------------------------------------------------------------------ 04 */
   {
     slug: "fitness-nutrition-coach",
+    seo: {
+      title:
+        "Fitness Nutrition Coach Course in Chennai (CFNC) | CoachLab",
+      description:
+        "Fitness nutrition course in Chennai. Macronutrients, micronutrients, BMR and TDEE, applied to fat loss, muscle gain and client coaching.",
+    },
     index: "04",
     title: "Certified Fitness Nutrition Coach",
     shortName: "CFNC",
@@ -371,6 +407,12 @@ export const courses: Course[] = [
   /* ------------------------------------------------------------------ 05 */
   {
     slug: "ace-exam-prep",
+    seo: {
+      title:
+        "ACE Personal Trainer Exam Preparation in Chennai | CoachLab",
+      description:
+        "Preparation for the ACE Personal Trainer exam in Chennai — chapter-wise study, revision, practice questions and mock exams.",
+    },
     index: "05",
     title: "ACE Personal Trainer Exam Preparatory Program",
     ctaLabel: "ACE Prep",
@@ -424,6 +466,12 @@ export const courses: Course[] = [
   /* ------------------------------------------------------------------ 06 */
   {
     slug: "professional-workshops",
+    seo: {
+      title:
+        "Professional Fitness Workshops in Chennai | CoachLab",
+      description:
+        "Continuing-education workshops for coaches in Chennai — strength and conditioning, functional training, sports nutrition and corrective exercise.",
+    },
     index: "06",
     title: "CoachLab Professional Workshops",
     ctaLabel: "Workshops",

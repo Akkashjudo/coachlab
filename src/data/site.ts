@@ -14,6 +14,9 @@ export const siteConfig = {
     "Professional fitness education for the next generation of coaches.",
   description:
     "Professional fitness education, personal trainer courses, nutrition coaching education and fitness workshops at CoachLab Institute of Fitness Education & Science in Chennai.",
+  /** Homepage meta description. Kept separate from the schema description. */
+  seoDescription:
+    "CoachLab provides professional fitness education, certification programs, workshops and career-focused learning for aspiring and experienced fitness professionals in Chennai.",
 
   /* ---- contact ---- */
   phoneDisplay: "8778853235",

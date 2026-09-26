@@ -154,6 +154,14 @@ export function MaskedHeading({
           >
             {line}
           </motion.span>
+          {/*
+            Each line is its own block, so a text extractor reads them with no
+            separator: the homepage H1 came out as "Train to become acertified
+            fitness coach". This trailing space sits at the end of a block and
+            collapses to nothing visually, but restores the word boundary for
+            Google and for screen readers.
+          */}
+          {i < lines.length - 1 ? " " : null}
         </span>
       ))}
     </Tag>

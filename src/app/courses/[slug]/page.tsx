@@ -31,18 +31,23 @@ export async function generateMetadata({
   const course = getCourse(slug);
   if (!course) return { title: "Course not found" };
 
-  const title = `${course.title}${course.shortName ? ` (${course.shortName})` : ""} — Chennai`;
-
   return {
-    title,
-    description: `${course.summary} Taught at ${siteConfig.fullName} in ${siteConfig.location.short}.`,
+    // `absolute` so the root layout's "| CoachLab" template does not append a
+    // second brand to a title that already ends with one.
+    title: { absolute: course.seo.title },
+    description: course.seo.description,
     alternates: { canonical: `/courses/${course.slug}` },
     openGraph: {
-      title: `${course.title} | ${siteConfig.name}`,
-      description: course.summary,
+      title: course.seo.title,
+      description: course.seo.description,
       url: `${SITE_URL}/courses/${course.slug}`,
-
-        images: [OG_IMAGE],
+      type: "article",
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: course.seo.title,
+      description: course.seo.description,
     },
   };
 }
